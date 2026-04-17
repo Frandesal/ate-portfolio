@@ -1,30 +1,88 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
+  const [active, setActive] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'services', 'experience', 'contact'];
+      let current = 'home';
+      for (let s of sections) {
+        const el = document.getElementById(s);
+        if (el && window.scrollY >= el.offsetTop - 200) {
+          current = s;
+        }
+      }
+      setActive(current);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="glass"
+      transition={{ duration: 0.8, ease: [0.2, 0, 0, 1] }}
       style={{
         position: 'fixed',
-        top: 0,
-        width: '100%',
-        zIndex: 1000,
-        height: '80px',
+        top: '24px',
+        left: 0,
+        right: 0,
         display: 'flex',
-        alignItems: 'center',
-        padding: '0 40px'
+        justifyContent: 'center',
+        zIndex: 1000,
+        pointerEvents: 'none'
       }}
     >
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <h2 style={{ fontSize: '1.5rem', color: 'var(--primary)' }}>K. Kate</h2>
-        <ul style={{ display: 'flex', gap: '30px', fontWeight: '500' }}>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
+      <div 
+        className="glass-pill"
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center', 
+          padding: '12px 32px',
+          gap: '60px',
+          pointerEvents: 'auto',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.03)'
+        }}
+      >
+        <h2 className="font-display" style={{ fontSize: '1.2rem', color: 'var(--primary)', margin: 0 }}>K.K.</h2>
+        <ul style={{ display: 'flex', gap: '32px', margin: 0 }}>
+          {['Home', 'Services', 'Experience', 'Contact'].map((item) => {
+            const id = item.toLowerCase();
+            const isActive = active === id;
+            return (
+              <li key={item} style={{ position: 'relative' }}>
+                <a 
+                  href={`#${id}`}
+                  style={{
+                    color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
+                    fontWeight: isActive ? '600' : '500',
+                    fontSize: '0.95rem'
+                  }}
+                >
+                  {item}
+                </a>
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-indicator"
+                    style={{
+                      position: 'absolute',
+                      bottom: '-6px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '4px',
+                      height: '4px',
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--accent-gold)'
+                    }}
+                  />
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </motion.nav>

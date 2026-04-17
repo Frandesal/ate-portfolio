@@ -1,24 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Color Palette */
-  --primary: #7E5BE2;
-  --primary-light: #F4F1FF;
-  --bg: #FAFAFB;
-  --text-main: #1D1D1F;
-  --text-muted: #6E6E73;
-  --accent: #D4AF37;
-  --white: #FFFFFF;
-  --glass: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.3);
+  /* Aetheria Luxe Color Palette */
+  --primary: #461599;
+  --primary-container: #5e35b1;
+  --bg-surface: #faf9f6;
+  --bg-surface-low: #f4f3f1;
+  --bg-surface-lowest: #ffffff;
+  --text-main: #1a1c1a;
+  --text-muted: #494453;
+  --accent-gold: #D4AF37;
+  --charcoal: #2C2C2C;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(250, 249, 246, 0.7);
+  --glass-border: rgba(250, 249, 246, 0.15);
 
   /* Typography */
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Epilogue', sans-serif;
+  --font-body: 'Manrope', sans-serif;
 
-  /* Spacing & Transitions */
-  --section-padding: 100px 20px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Elevations (Ambient Shadows) */
+  --shadow-ambient: 0 20px 40px rgba(26, 28, 26, 0.05);
+  --shadow-hover: 0 30px 60px rgba(70, 21, 153, 0.08);
+
+  /* Spacing */
+  --section-padding: 120px 20px;
+  --transition: 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
 * {
@@ -28,17 +36,19 @@
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--bg);
+  font-family: var(--font-body);
+  background-color: var(--bg-surface);
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -51,19 +61,84 @@ ul {
   list-style: none;
 }
 
-/* Glassmorphism Utility */
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Glassmorphism Pill Navigation */
+.glass-pill {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 100px;
   border: 1px solid var(--glass-border);
 }
 
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* The Signature Gradient Button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+  color: white;
+  padding: 18px 40px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-ambient);
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-main);
+  padding: 18px 40px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-surface-low);
+  color: var(--primary);
+}
+
+/* Input Fields - Floating Style */
+.input-floating {
+  width: 100%;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(73, 68, 83, 0.4);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+.input-floating:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+  background: var(--bg-surface-low);
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 8px 8px 0 0;
 }
 
 /* Custom Scrollbar */
@@ -72,20 +147,20 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--bg-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--primary-container);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6a49c9;
+  background: var(--primary);
 }
 
 @media (max-width: 768px) {
   :root {
-    --section-padding: 60px 20px;
+    --section-padding: 80px 20px;
   }
 }
