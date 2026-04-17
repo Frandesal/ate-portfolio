@@ -163,4 +163,57 @@ ul {
   :root {
     --section-padding: 80px 20px;
   }
+  
+  .font-display.hero-title {
+    fontSize: 3rem !important;
+  }
+  
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .grid-hero {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+  
+  .glass-pill {
+    justify-content: center !important;
+  }
 }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.grid-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  margin: 0;
+}
+

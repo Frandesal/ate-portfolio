@@ -39,7 +39,7 @@ const Hero = () => {
               marginBottom: '32px'
             }}
           >
-            THE ETHEREAL ARCHITECT
+            ACHLYS
           </motion.div>
           
           <h1 className="font-display" style={{ fontSize: '5rem', marginBottom: '24px', position: 'relative', zIndex: 2 }}>

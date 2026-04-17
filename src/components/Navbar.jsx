@@ -33,7 +33,8 @@ const Navbar = () => {
         display: 'flex',
         justifyContent: 'center',
         zIndex: 1000,
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        padding: '0 20px'
       }}
     >
       <div 
@@ -45,11 +46,11 @@ const Navbar = () => {
           padding: '12px 32px',
           gap: '60px',
           pointerEvents: 'auto',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.03)'
+          boxShadow: '0 10px 40px rgba(0,0,0,0.08)'
         }}
       >
-        <h2 className="font-display" style={{ fontSize: '1.2rem', color: 'var(--primary)', margin: 0 }}>K.K.</h2>
-        <ul style={{ display: 'flex', gap: '32px', margin: 0 }}>
+        <h2 className="font-display" style={{ fontSize: '1.2rem', color: 'var(--primary)', margin: 0, letterSpacing: '2px' }}>ACHLYS.</h2>
+        <ul className="nav-links">
           {['Home', 'Services', 'Experience', 'Contact'].map((item) => {
             const id = item.toLowerCase();
             const isActive = active === id;
@@ -58,8 +59,8 @@ const Navbar = () => {
                 <a 
                   href={`#${id}`}
                   style={{
-                    color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
-                    fontWeight: isActive ? '600' : '500',
+                    color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                    fontWeight: isActive ? '700' : '500',
                     fontSize: '0.95rem'
                   }}
                 >
@@ -73,8 +74,8 @@ const Navbar = () => {
                       bottom: '-6px',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      width: '4px',
-                      height: '4px',
+                      width: '6px',
+                      height: '6px',
                       borderRadius: '50%',
                       backgroundColor: 'var(--accent-gold)'
                     }}
