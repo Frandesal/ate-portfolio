@@ -1,81 +1,70 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Calendar, Hash, FileText, Layout, Users } from 'lucide-react';
+import { Mail, Calendar, Database, Plane, FileText, UserPlus } from 'lucide-react';
 
 const services = [
-  { icon: <Mail size={24} />, title: 'Inbox Management', desc: 'Keeping your communications organized, spam-free, and prioritized so you only see what matters.', height: '340px', offset: '0px' },
-  { icon: <Calendar size={24} />, title: 'Calendar Coordination', desc: 'Scheduling meetings seamlessly so your day flows perfectly, maximizing your deep work time.', height: '380px', offset: '40px' },
-  { icon: <Hash size={24} />, title: 'Social Media', desc: 'Maintaining your brand\'s presence with consistent and engaging posts tailored to your audience.', height: '320px', offset: '20px' },
-  { icon: <FileText size={24} />, title: 'Admin Support', desc: 'Handling data entry, documents, and back-office tasks with precision and absolute confidentiality.', height: '360px', offset: '60px' },
-  { icon: <Layout size={24} />, title: 'Project Tracking', desc: 'Coordinating milestones and teams to ensure your projects are delivered beautifully and on time.', height: '340px', offset: '10px' },
-  { icon: <Users size={24} />, title: 'Client Relations', desc: 'Providing exceptional white-glove service to your clients and nurturing long-term relationships.', height: '380px', offset: '50px' }
+  { icon: <Mail size={32} />, title: 'Inbox Mgmt', desc: 'Organizing emails and prioritizing critical comms so you never miss a beat.', color: 'var(--color-accent-1)' },
+  { icon: <Calendar size={32} />, title: 'Calendar', desc: 'Seamless scheduling and meeting preparation to maximize efficiency.', color: 'var(--color-accent-2)' },
+  { icon: <Database size={32} />, title: 'CRM & Data', desc: 'Precise data handling and meticulous management of your systems.', color: 'var(--color-accent-3)' },
+  { icon: <Plane size={32} />, title: 'Travel', desc: 'Booking flights, coordinating itineraries, and reconciling expenses.', color: 'var(--color-accent-4)' },
+  { icon: <FileText size={32} />, title: 'Doc Prep', desc: 'Formatting and preparing pristine reports and presentations.', color: 'var(--color-accent-1)' },
+  { icon: <UserPlus size={32} />, title: 'Onboarding', desc: 'Handling client communications for a flawless white-glove experience.', color: 'var(--color-accent-2)' }
 ];
 
 const Services = () => {
   return (
-    <section id="services" style={{ padding: 'var(--section-padding)', background: 'var(--bg-surface)' }}>
+    <section id="services" style={{ padding: 'var(--section-padding)', position: 'relative' }}>
       <div className="container">
-        <div className="grid-2" style={{ marginBottom: '80px', alignItems: 'end' }}>
-          <div>
-            <h2 className="font-display hero-title" style={{ fontSize: '3.5rem', margin: 0 }}>
-              Curated<br/><span style={{ color: 'var(--primary)' }}>Expertise.</span>
-            </h2>
-          </div>
-          <div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '500px', margin: 0 }}>
-              Moving beyond basic task execution, I provide comprehensive support to give you the mental space to focus on what you do best.
-            </p>
-          </div>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <h2 className="font-display hero-title" style={{ fontSize: '4rem', margin: '0 0 24px 0' }}>
+            Curated Services.
+          </h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: '500' }}>
+            High-end administrative support with a creative edge. I provide the structure so you can focus on growth.
+          </p>
         </div>
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: '32px',
-          alignItems: 'start'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+          gap: '32px'
         }}>
           {services.map((s, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.2, 0, 0, 1] }}
+              transition={{ duration: 0.6, delay: i * 0.1, type: 'spring' }}
               viewport={{ once: true, margin: '-50px' }}
               whileHover={{ y: -8, boxShadow: 'var(--shadow-hover)' }}
               style={{
-                padding: '48px 32px',
-                borderRadius: '24px',
-                background: 'var(--bg-surface-lowest)',
-                boxShadow: 'var(--shadow-ambient)',
-                minHeight: '320px',
+                padding: '40px',
+                borderRadius: 'var(--border-radius-lg)',
+                backgroundColor: 'var(--bg-card)',
+                border: 'var(--border-playful)',
+                boxShadow: 'var(--shadow-playful)',
                 display: 'flex',
                 flexDirection: 'column',
-                transition: 'var(--transition)',
-                position: 'relative',
-                overflow: 'hidden'
+                transition: 'var(--transition)'
               }}
             >
-              {/* Subtle background flare */}
-              <motion.div 
-                whileHover={{ scale: 1.5 }}
-                transition={{ duration: 0.5 }}
-                style={{ position: 'absolute', top: '-20px', right: '-20px', width: '100px', height: '100px', background: 'var(--bg-surface-low)', borderRadius: '50%', zIndex: 0 }} 
-              />
-              
               <div style={{ 
-                color: 'var(--accent-gold)', 
-                marginBottom: '32px',
-                position: 'relative',
-                zIndex: 1,
-                background: 'var(--bg-surface-low)',
-                padding: '16px',
-                width: 'fit-content',
-                borderRadius: '16px'
+                backgroundColor: s.color, 
+                color: 'var(--text-main)',
+                width: '64px',
+                height: '64px',
+                borderRadius: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '24px',
+                border: 'var(--border-playful)',
+                boxShadow: 'var(--shadow-playful)'
               }}>
                 {s.icon}
               </div>
-              <h3 className="font-display" style={{ fontSize: '1.5rem', marginBottom: '16px', position: 'relative', zIndex: 1 }}>{s.title}</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7, position: 'relative', zIndex: 1 }}>{s.desc}</p>
+              <h3 className="font-display" style={{ fontSize: '1.8rem', marginBottom: '16px' }}>{s.title}</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', margin: 0, fontWeight: '500' }}>{s.desc}</p>
             </motion.div>
           ))}
         </div>

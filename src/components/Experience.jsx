@@ -24,47 +24,56 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" style={{ padding: 'var(--section-padding)', background: 'var(--bg-surface-low)' }}>
+    <section id="experience" style={{ padding: 'var(--section-padding)' }}>
       <div className="container">
-        <h2 className="font-display hero-title" style={{ fontSize: '3.5rem', textAlign: 'center', marginBottom: '80px', color: 'var(--charcoal)' }}>The Journey.</h2>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <h2 className="font-display hero-title" style={{ fontSize: '4rem', margin: '0 0 16px 0' }}>The Journey.</h2>
+          <div style={{ width: '80px', height: '8px', backgroundColor: 'var(--color-accent-2)', margin: '0 auto', borderRadius: '4px' }} />
+        </div>
         
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.15, ease: [0.2, 0, 0, 1] }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.15, type: 'spring' }}
               viewport={{ once: true, margin: '-50px' }}
-              whileHover={{ scale: 1.01, x: 5 }}
+              whileHover={{ scale: 1.02 }}
               style={{ 
-                background: 'var(--bg-surface-lowest)',
+                backgroundColor: 'var(--bg-card)',
                 padding: '40px',
-                borderRadius: '24px',
+                borderRadius: 'var(--border-radius-lg)',
+                border: 'var(--border-playful)',
+                boxShadow: 'var(--shadow-playful)',
                 display: 'grid',
                 gridTemplateColumns: 'minmax(120px, 1fr) 3fr',
-                gap: '20px',
+                gap: '24px',
                 alignItems: 'start',
-                boxShadow: 'var(--shadow-ambient)',
-                transition: 'all var(--transition)'
+                transition: 'transform var(--transition), box-shadow var(--transition)',
+                position: 'relative'
               }}
               className="grid-2-mobile"
             >
               <div style={{ 
-                color: 'var(--accent-gold)', 
-                fontWeight: '600', 
-                fontSize: '1rem',
-                fontFamily: 'var(--font-display)',
-                letterSpacing: '0.05em'
+                backgroundColor: 'var(--color-accent-4)', 
+                color: 'var(--text-main)',
+                padding: '8px 16px',
+                borderRadius: '100px',
+                fontWeight: '700', 
+                fontSize: '0.9rem',
+                border: 'var(--border-playful)',
+                display: 'inline-block',
+                transform: 'rotate(-3deg)'
               }}>
                 {exp.year}
               </div>
               <div>
-                <h3 className="font-display" style={{ fontSize: '1.75rem', marginBottom: '8px', color: 'var(--primary)' }}>{exp.role}</h3>
-                <p style={{ fontWeight: '600', color: 'var(--text-main)', marginBottom: '16px', letterSpacing: '0.02em', textTransform: 'uppercase', fontSize: '0.8rem' }}>
+                <h3 className="font-display" style={{ fontSize: '2rem', margin: '0 0 8px 0', color: 'var(--text-main)' }}>{exp.role}</h3>
+                <p style={{ fontWeight: '700', color: 'var(--color-accent-1)', margin: '0 0 16px 0', fontSize: '1.1rem' }}>
                   {exp.company}
                 </p>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.8 }}>{exp.desc}</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', margin: 0, fontWeight: '500' }}>{exp.desc}</p>
               </div>
             </motion.div>
           ))}

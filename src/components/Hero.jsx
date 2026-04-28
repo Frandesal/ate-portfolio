@@ -12,112 +12,99 @@ const Hero = () => {
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Abstract Background Blur Elements */}
-      <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, var(--primary-container) 0%, transparent 70%)', opacity: 0.05, filter: 'blur(80px)', zIndex: 0 }} />
-      <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '800px', height: '800px', background: 'radial-gradient(circle, var(--accent-gold) 0%, transparent 70%)', opacity: 0.05, filter: 'blur(100px)', zIndex: 0 }} />
+      {/* Playful Organic Blobs */}
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], rotate: [0, 45, 0] }} 
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        style={{ position: 'absolute', top: '5%', left: '-5%', width: '40vw', height: '40vw', background: 'var(--color-accent-2)', borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%', opacity: 0.6, filter: 'blur(40px)', zIndex: 0 }} 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], rotate: [0, -45, 0] }} 
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '50vw', height: '50vw', background: 'var(--color-accent-4)', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%', opacity: 0.5, filter: 'blur(60px)', zIndex: 0 }} 
+      />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center', gap: '80px' }}>
+      <div className="container grid-2" style={{ position: 'relative', zIndex: 1, alignItems: 'center' }}>
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.2, 0, 0, 1] }}
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
           style={{ position: 'relative' }}
         >
           <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
+            initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }}
             style={{ 
               display: 'inline-block',
-              padding: '6px 16px', 
-              background: 'var(--bg-surface-lowest)', 
-              borderRadius: '100px',
-              border: '1px solid var(--glass-border)',
-              boxShadow: 'var(--shadow-ambient)',
-              color: 'var(--primary)', 
-              fontSize: '0.85rem',
-              fontWeight: '600', 
-              letterSpacing: '0.05em',
-              marginBottom: '32px'
+              padding: '8px 24px', 
+              backgroundColor: 'var(--color-accent-3)',
+              color: 'var(--text-main)', 
+              borderRadius: 'var(--border-radius-xl)',
+              border: 'var(--border-playful)',
+              boxShadow: 'var(--shadow-playful)',
+              fontFamily: 'var(--font-body)',
+              fontWeight: '700', 
+              fontSize: '0.9rem',
+              marginBottom: '32px',
+              transform: 'rotate(-2deg)'
             }}
           >
-            ACHLYS
+            👋 Hi, I'm Kate
           </motion.div>
           
-          <h1 className="font-display" style={{ fontSize: '5rem', marginBottom: '24px', position: 'relative', zIndex: 2 }}>
-            <span style={{ display: 'block', color: 'var(--charcoal)' }}>Strategic</span>
-            <span style={{ display: 'block', color: 'var(--primary)' }}>Curation &</span>
-            <span style={{ display: 'block', color: 'var(--text-main)' }}>Execution.</span>
+          <h1 className="font-display hero-title" style={{ fontSize: '5.5rem', marginBottom: '24px', position: 'relative', zIndex: 2, lineHeight: 1.05 }}>
+            <span style={{ display: 'block' }}>Let's Build</span>
+            <span style={{ display: 'block', color: 'var(--color-accent-1)' }}>Brilliant</span>
+            <span style={{ display: 'block' }}>Operations.</span>
           </h1>
           
-          {/* Asymmetrical shifting of body text as per guideline */}
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '48px', maxWidth: '440px', marginLeft: 'auto', marginRight: '40px' }}>
-            Elevating your business efficiency with high-end administrative support, intentional planning, and seamless coordination.
+          <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '48px', maxWidth: '440px', fontWeight: '500' }}>
+            Elevating your business with stylish, high-end administrative support and seamless coordination. I handle the details so you can create the magic.
           </p>
           
-          <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginLeft: 'auto', width: 'fit-content', marginRight: '40px' }}>
-            <motion.a 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="#contact" 
-              className="btn-primary"
-            >
-              Start the Journey
-            </motion.a>
-            <motion.a 
-              whileHover={{ x: 5 }}
-              href="#services" 
-              style={{ color: 'var(--accent-gold)', fontWeight: '600', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}
-            >
-              Explore Services <span style={{ fontSize: '1.2rem' }}>→</span>
-            </motion.a>
+          <div className="hero-buttons" style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <a href="#contact" className="btn-primary">
+              Let's Chat
+            </a>
+            <a href="/resume.pdf" download className="btn-outline" style={{ backgroundColor: 'var(--bg-card)' }}>
+              Download CV
+            </a>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 1.2, delay: 0.4 }}
-          style={{ position: 'relative' }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
         >
-          {/* Off-Grid Offset Background Card */}
+          {/* Playful Image Frame */}
           <div style={{
             position: 'absolute',
-            top: '40px',
-            left: '-40px',
+            top: '20px',
+            left: '20px',
             width: '100%',
             height: '100%',
-            background: 'var(--bg-surface-low)',
-            borderRadius: '24px',
-            zIndex: -1
+            background: 'var(--color-accent-1)',
+            borderRadius: 'var(--border-radius-xl)',
+            border: 'var(--border-playful)',
+            zIndex: -1,
+            transform: 'rotate(4deg)'
           }} />
           
           <div style={{
             width: '100%',
             aspectRatio: '3/4',
-            borderRadius: '24px',
+            borderRadius: 'var(--border-radius-xl)',
+            border: 'var(--border-playful)',
             overflow: 'hidden',
-            boxShadow: 'var(--shadow-ambient)',
+            backgroundColor: 'var(--bg-card)',
             position: 'relative'
           }}>
             <img 
               src={profileImg} 
-              alt="Kimberly Kate" 
+              alt="Kate" 
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-            {/* Inner Glass Overlay */}
-            <div style={{
-              position: 'absolute',
-              bottom: '24px',
-              left: '24px',
-              right: '24px',
-              padding: '20px',
-              background: 'var(--glass-bg)',
-              backdropFilter: 'blur(12px)',
-              borderRadius: '16px',
-              border: '1px solid var(--glass-border)'
-            }}>
-              <p style={{ margin: 0, fontWeight: '600', color: 'var(--primary)' }}>Kimberly Kate E. Longno</p>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Executive Virtual Assistant</p>
-            </div>
           </div>
         </motion.div>
       </div>

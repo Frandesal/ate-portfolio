@@ -24,7 +24,7 @@ const Navbar = () => {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.2, 0, 0, 1] }}
+      transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
       style={{
         position: 'fixed',
         top: '24px',
@@ -43,14 +43,15 @@ const Navbar = () => {
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center', 
-          padding: '12px 32px',
-          gap: '60px',
+          padding: '16px 40px',
+          gap: '80px',
           pointerEvents: 'auto',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.08)'
+          boxShadow: 'var(--shadow-playful)',
+          border: 'var(--border-playful)'
         }}
       >
-        <h2 className="font-display" style={{ fontSize: '1.2rem', color: 'var(--primary)', margin: 0, letterSpacing: '2px' }}>ACHLYS.</h2>
-        <ul className="nav-links">
+        <h2 className="font-display" style={{ fontSize: '1.4rem', color: 'var(--color-accent-1)', margin: 0, letterSpacing: '1px' }}>Kate.</h2>
+        <ul className="nav-links" style={{ display: 'flex', gap: '32px', margin: 0, padding: 0, listStyle: 'none' }}>
           {['Home', 'Services', 'Experience', 'Contact'].map((item) => {
             const id = item.toLowerCase();
             const isActive = active === id;
@@ -59,9 +60,10 @@ const Navbar = () => {
                 <a 
                   href={`#${id}`}
                   style={{
-                    color: isActive ? 'var(--primary)' : 'var(--text-muted)',
-                    fontWeight: isActive ? '700' : '500',
-                    fontSize: '0.95rem'
+                    color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
+                    fontWeight: isActive ? '700' : '600',
+                    fontSize: '1rem',
+                    textTransform: 'lowercase'
                   }}
                 >
                   {item}
@@ -71,13 +73,13 @@ const Navbar = () => {
                     layoutId="nav-indicator"
                     style={{
                       position: 'absolute',
-                      bottom: '-6px',
+                      bottom: '-8px',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      backgroundColor: 'var(--accent-gold)'
+                      width: '100%',
+                      height: '4px',
+                      borderRadius: '4px',
+                      backgroundColor: 'var(--color-accent-1)'
                     }}
                   />
                 )}
