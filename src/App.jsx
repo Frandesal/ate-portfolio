@@ -18,13 +18,14 @@ function App() {
         <Contact />
       </main>
       <footer style={{ 
-        padding: '40px 20px', 
+        padding: '40px 0', 
         textAlign: 'center', 
-        background: 'var(--bg)', 
-        color: 'var(--text-muted)',
-        borderTop: '1px solid rgba(0,0,0,0.05)'
+        borderTop: '1px solid var(--border)'
       }}>
-        <p>&copy; {new Date().getFullYear()} Kimberly Kate E. Longno. All rights reserved.</p>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+          <p style={{ color: 'var(--text-light)', fontSize: '0.85rem', margin: 0 }}>&copy; {new Date().getFullYear()} Kimberly Kate E. Longno</p>
+          <p style={{ color: 'var(--text-light)', fontSize: '0.85rem', margin: 0 }}>Crafted with care</p>
+        </div>
       </footer>
     </div>
   );

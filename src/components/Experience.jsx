@@ -3,87 +3,99 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    year: '2023 - Present',
+    period: '2023 — Present',
     role: 'Lead Virtual Assistant',
-    company: 'Independent Contractor',
-    desc: 'Driving operations for fast-growing startups. Handling major projects, complex schedules, and executive tasks seamlessly so founders can focus on scaling.'
+    company: 'Independent / Freelance',
+    desc: 'Providing high-level executive support to multiple startup founders. Managing complex schedules, travel logistics, and cross-functional team communications.',
+    skills: ['Project Management', 'Email Triage', 'CRM']
   },
   {
-    year: '2021 - 2023',
+    period: '2021 — 2023',
     role: 'Executive Assistant',
     company: 'Creative Agency',
-    desc: 'Managed travel, streamlined workflows, and acted as the main point of contact for VIP clients, ensuring white-glove service at all times.'
+    desc: 'Served as the primary point of contact for VIP clients. Streamlined internal workflows resulting in a 30% reduction in administrative overhead.',
+    skills: ['Client Relations', 'Workflow Design', 'Travel']
   },
   {
-    year: '2019 - 2021',
+    period: '2019 — 2021',
     role: 'Project Coordinator',
     company: 'Tech Solutions Inc.',
-    desc: 'Orchestrated team communications and tracked milestones to launch over 20 digital products successfully and under budget.'
+    desc: 'Orchestrated team communications and tracked project milestones across 20+ digital product launches, all delivered on-time and under budget.',
+    skills: ['Coordination', 'Reporting', 'Scheduling']
   }
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" style={{ padding: 'var(--section-padding)' }}>
+    <section id="experience" className="section" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <h2 className="font-display hero-title" style={{ fontSize: '4rem', margin: '0 0 16px 0' }}>The Journey.</h2>
-          <div style={{ width: '80px', height: '8px', backgroundColor: 'var(--color-accent-2)', margin: '0 auto', borderRadius: '4px' }} />
-        </div>
-        
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          style={{ marginBottom: '80px' }}
+        >
+          <span className="badge" style={{ marginBottom: '20px' }}>Experience</span>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', letterSpacing: '-0.02em', maxWidth: '500px' }}>
+            Where I've <em style={{ fontStyle: 'italic' }}>made an impact</em>
+          </h2>
+        </motion.div>
+
+        {/* Timeline */}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.15, type: 'spring' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
               viewport={{ once: true, margin: '-50px' }}
-              whileHover={{ scale: 1.02 }}
-              style={{ 
-                backgroundColor: 'var(--bg-card)',
-                padding: '40px',
-                borderRadius: 'var(--border-radius-lg)',
-                border: 'var(--border-playful)',
-                boxShadow: 'var(--shadow-playful)',
+              style={{
                 display: 'grid',
-                gridTemplateColumns: 'minmax(120px, 1fr) 3fr',
-                gap: '24px',
-                alignItems: 'start',
-                transition: 'transform var(--transition), box-shadow var(--transition)',
-                position: 'relative'
+                gridTemplateColumns: '200px 1fr',
+                gap: '48px',
+                padding: '48px 0',
+                borderTop: '1px solid var(--border)',
+                alignItems: 'start'
               }}
-              className="grid-2-mobile"
+              className="exp-row"
             >
-              <div style={{ 
-                backgroundColor: 'var(--color-accent-4)', 
-                color: 'var(--text-main)',
-                padding: '8px 16px',
-                borderRadius: '100px',
-                fontWeight: '700', 
-                fontSize: '0.9rem',
-                border: 'var(--border-playful)',
-                display: 'inline-block',
-                transform: 'rotate(-3deg)'
-              }}>
-                {exp.year}
+              <div>
+                <p style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>{exp.period}</p>
               </div>
               <div>
-                <h3 className="font-display" style={{ fontSize: '2rem', margin: '0 0 8px 0', color: 'var(--text-main)' }}>{exp.role}</h3>
-                <p style={{ fontWeight: '700', color: 'var(--color-accent-1)', margin: '0 0 16px 0', fontSize: '1.1rem' }}>
-                  {exp.company}
-                </p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', margin: 0, fontWeight: '500' }}>{exp.desc}</p>
+                <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-sans)', fontWeight: 600, marginBottom: '4px' }}>{exp.role}</h3>
+                <p style={{ color: 'var(--accent)', fontWeight: 500, fontSize: '0.95rem', marginBottom: '16px' }}>{exp.company}</p>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '20px', maxWidth: '560px' }}>{exp.desc}</p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {exp.skills.map((skill, j) => (
+                    <span key={j} style={{
+                      padding: '6px 14px',
+                      fontSize: '0.8rem',
+                      fontWeight: 500,
+                      borderRadius: 'var(--radius-full)',
+                      background: 'var(--bg)',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid var(--border)'
+                    }}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-      <style dangerouslySetInnerHTML={{__html: `
+
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
-          .grid-2-mobile {
-            grid-template-columns: 1fr !important;
-            padding: 32px !important;
+          .exp-row { 
+            grid-template-columns: 1fr !important; 
+            gap: 16px !important;
+            padding: 32px 0 !important;
           }
         }
       `}} />
